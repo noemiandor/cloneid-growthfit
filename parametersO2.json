@@ -1,0 +1,76 @@
+{
+  "_comment": "This JSON file contains parameters for the O2 experiment (Glucose/Phosphate Starvation). Modify values as needed.",
+  "database": {
+    "_comment": "Database connection queries for retrieving passaging and media data. Update these queries if your data source changes.",
+    "queries": {
+      "passaging_query": "SELECT id, cellLine, event, passaged_from_id1, passage, date, correctedCount, cellCount, areaOccupied_um2, cellSize_um2, media FROM Passaging",
+      "media_query": "SELECT * from Media"
+    }
+  },
+  "filters": [
+    {
+      "_comment": "Define filter ranges for seeding lineages. 'first' and 'last' denote the starting and ending seed IDs. 'label' and 'label2' are used to group data.",
+      "ranges": [
+        { "first": "HGC-27_C_A1_seed", "last": "HGC-27_C_A7_seed", "label": "HGC-27", "label2": "control" },
+        { "first": "HGC-27_O1_A1_seed", "last": "HGC-27_O1_A7_seed", "label": "HGC-27", "label2": "deprived1" },
+        { "first": "HGC-27_O2_A1_seed", "last": "HGC-27_O2_A7_seed", "label": "HGC-27", "label2": "deprived2" },
+        { "first": "SNU-668_C_A1_seed", "last": "SNU-668_C_A7_seed", "label": "SNU-668", "label2": "control" },
+        { "first": "SNU-668_O1_A1_seed", "last": "SNU-668_O1_A1_seed", "label": "SNU-668", "label2": "deprived1" },
+        { "first": "SNU-668_O2_A1_seed", "last": "SNU-668_O2_A1_seed", "label": "SNU-668", "label2": "deprived2" },
+        { "first": "SUM-159_NLS_2N_C_A1_seed", "last": "SUM-159_NLS_2N_C_A7_seed", "label": "SUM-159_NLS_2N", "label2": "control" },
+        { "first": "SUM-159_NLS_2N_O1_A1_seed", "last": "SUM-159_NLS_2N_O1_A7_seed", "label": "SUM-159_NLS_2N", "label2": "deprived1" },
+        { "first": "SUM-159_NLS_2N_O2_A1_seed", "last": "SUM-159_NLS_2N_O2_A7_seed", "label": "SUM-159_NLS_2N", "label2": "deprived2" },
+        { "first": "SUM-159_NLS_4N_C_A1_seed", "last": "SUM-159_NLS_4N_C_A7_seed", "label": "SUM-159_NLS_4N", "label2": "control" },
+        { "first": "SUM-159_NLS_4N_O1_A1_seed", "last": "SUM-159_NLS_4N_O1_A7_seed", "label": "SUM-159_NLS_4N", "label2": "deprived1" },
+        { "first": "SUM-159_NLS_4N_O2_A1_seed", "last": "SUM-159_NLS_4N_O2_A7_seed", "label": "SUM-159_NLS_4N", "label2": "deprived2" }
+      ]
+    }
+  ],
+  "manual_filters": [
+    {
+      "key": "id",
+      "values": [
+        "SNU-668_r3_A56_seed",
+        "SNU-668_r3_a56t3_LT_harvestT1"
+      ]
+    },
+    {
+      "key": "event",
+      "values": [
+        "seeding"
+      ]
+    }
+  ],
+  "plotting": {
+    "_comment": "Plotting configuration. Update the options below to change colors, titles, axis labels, and faceting behavior. Also set the output path for saving the plot.",
+    "color_by": "oxygen_pct",
+    "make_growth_curves": true,
+    "make_generation_barplot": true,
+    "make_passage_vs_growth": true,
+    "output_path": "./tmp.png",
+    "titles": {
+      "_comment": "Set plot titles for different conditions. These titles are used on your plots.",
+      "glucose": "Glucose Starvation Experiment",
+      "phosphate": "Phosphate Starvation Experiment",
+      "control": "Control Condition",
+      "passage_vs_growth": "Growth Rate Across Passages"
+    },
+    "axis_labels": {
+      "_comment": "Axis labels for the plots. Adjust these values to change the x-axis and y-axis labels.",
+      "x_label": "Days After Seeding",
+      "y_label_cellcount": "Cell Count",
+      "y_label_growth": "Growth Rate (day⁻¹)",
+      "passage_label": "Passage ID"
+    },
+    "facet_grid": {
+      "_comment": "Faceting options for splitting the plots. 'rows' and 'cols' define the layout and 'scales' controls the axis scaling.",
+      "rows": "label_value",
+      "cols": "adjPass",
+      "scales": "free"
+    }
+  },
+  "database_settings": {
+    "_comment": "Database settings. Set disconnect_on_completion to true to automatically disconnect after the script finishes.",
+    "disconnect_on_completion": true
+  }
+}
