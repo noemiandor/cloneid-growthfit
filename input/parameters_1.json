@@ -1,0 +1,55 @@
+{
+  "_comment": "This JSON file contains parameters for the Glucose experiment. Modify values as needed.",
+  "database": {
+    "_comment": "Database connection queries for retrieving passaging and media data. Update queries if your schema changes.",
+    "queries": {
+      "passaging_query": "SELECT id, cellLine, event, passaged_from_id1, passage, date, correctedCount, cellCount, areaOccupied_um2, cellSize_um2, media FROM Passaging",
+      "media_query": "SELECT * from Media"
+    }
+  },
+  "filters": [
+    {
+      "_comment": "Define filter ranges for seeding lineages. 'first' and 'last' specify the starting and ending seed IDs. 'label' and 'label2' provide grouping information.",
+      "ranges": [
+        { "first": "SNU-668_C_A1_seed", "last": "SNU-668_C_A1_harvesT5", "label": "SNU-668", "label2": "control" }
+      ]
+    }
+  ],
+  "manual_filters": [
+    {
+      "_comment": "User-specified key-value pairs to exclude",
+      "key": "id",
+      "values": [
+      ]
+    }
+  ],
+  "plotting": {
+    "_comment": "Plotting configuration. Update the below keys to adjust plot colors, titles, axis labels, and faceting. Also set the output path for saving the plot.",
+    "color_by": "label_value",
+    "make_growth_curves": true,
+    "make_generation_barplot": false,
+    "make_passage_vs_growth": false,
+    "output_path": "./tmp1.png",
+    "titles": {
+      "_comment": "Define plot titles for different conditions. These titles are used when generating the plots.",
+      "control": "Serum Conditions"
+    },
+    "axis_labels": {
+      "_comment": "Axis labels for the plots. Change these to update the x and y labels on your plots.",
+      "x_label": "Days After Seeding",
+      "y_label_cellcount": "Cell Count",
+      "y_label_growth": "Growth Rate (day⁻¹)",
+      "passage_label": "Passage ID"
+    },
+    "facet_grid": {
+      "_comment": "Faceting options for splitting plots. 'rows' and 'cols' determine the grid layout; 'scales' can be 'free' or 'fixed'.",
+      "rows": "sublabel_value",
+      "cols": "adjPass",
+      "scales": "free"
+    }
+  },
+  "database_settings": {
+    "_comment": "Database settings. Set disconnect_on_completion to true to disconnect from the database after processing.",
+    "disconnect_on_completion": true
+  }
+}

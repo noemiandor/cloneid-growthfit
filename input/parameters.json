@@ -1,0 +1,99 @@
+{
+  "experiment": {
+    "name": "SNU668_rK_Selection_Experiments"
+  },
+  "database": {
+    "host": "cloneid.cswgogbb5ufg.us-east-1.rds.amazonaws.com",
+    "user": "veiththomas",
+    "password": "hawkAndDoveGame",
+    "dbname": "CLONEID",
+    "queries": {
+      "passaging_query": "SELECT id, cellLine, event, passaged_from_id1, passage, date, correctedCount, cellCount, areaOccupied_um2, cellSize_um2, media FROM Passaging",
+      "media_query": "SELECT * from Media"
+    }
+  },
+  "paths": {
+    "working_dir": "~/Downloads/"
+  },
+  "filters": [
+    {
+      "column_name": "id",
+      "method": "range",
+      "ranges": [
+        {
+          "first": "SNU-668_r1_A1_seed",
+          "last": "SNU-668_r1_A56_seed",
+          "label": "SNU-668",
+          "label2": "r1"
+        },
+        {
+          "first": "SNU-668_r2_A1_seed",
+          "last": "SNU-668_r2_A56_seed",
+          "label": "SNU-668",
+          "label2": "r2"
+        },
+        {
+          "first": "SNU-668_r3_A1_seed",
+          "last": "SNU-668_r3_A56_seed",
+          "label": "SNU-668",
+          "label2": "r3"
+        },
+        {
+          "first": "SNU-668_K1_A1_seed",
+          "last": "SNU-668_K1_A35_seed",
+          "label": "SNU-668",
+          "label2": "k1"
+        },
+        {
+          "first": "SNU-668_K2_A1_seed",
+          "last": "SNU-668_K2_A35_seed",
+          "label": "SNU-668",
+          "label2": "k2"
+        },
+        {
+          "first": "SNU-668_K3_A1_seed",
+          "last": "SNU-668_K3_A35_seed",
+          "label": "SNU-668",
+          "label2": "k3"
+        },
+        {
+          "first": "SNU-668_rK_A0_seed",
+          "last": "SNU-668_rK_A0_seed",
+          "label": "SNU-668",
+          "label2": "c1"
+        }
+      ]
+    }
+  ],
+  "subexperiment_map": {
+    "HGC-27": "HGC-27",
+    "SNU-668": "SNU-668",
+    "SUM-159_NLS_4N": "SUM-159 4N",
+    "SUM-159_NLS_2N": "SUM-159 2N"
+  },
+  "plotting": {
+    "make_growth_curves": true,
+    "make_generation_barplot": true,
+    "make_passage_vs_growth": true,
+    "titles": {
+      "r-selection": "Sparse Population Density",
+      "K-selection": "Crowded Population Density",
+      "control": "Parental Control Lineage",
+      "passage_vs_growth": "Growth Rate Across Passages"
+    },
+    "axis_labels": {
+      "x_label": "Days After Seeding",
+      "y_label_cellcount": "Cell Count",
+      "y_label_growth": "Growth Rate (day\u207b\u00b9)",
+      "passage_label": "Passage ID"
+    },
+    "facet_grid": {
+      "rows": "label_value",
+      "cols": "adjPass",
+      "scales": "free"
+    }
+  },
+  "database_settings": {
+    "disconnect_on_completion": true
+  }
+}

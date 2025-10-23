@@ -1,0 +1,84 @@
+{
+  "_comment": "This JSON file contains parameters for the SNU668 rK Selection Experiments. Modify values as needed.",
+  "database": {
+    "_comment": "Database connection queries for retrieving passaging and media data. Update these if your data source changes.",
+    "queries": {
+      "passaging_query": "SELECT id, cellLine, event, passaged_from_id1, passage, date, correctedCount, cellCount, areaOccupied_um2, cellSize_um2, media FROM Passaging",
+      "media_query": "SELECT * from Media"
+    }
+  },
+  "filters": [
+    {
+      "_comment": "Define filter ranges for seeding lineages. Specify 'first' and 'last' seed IDs along with grouping labels.",
+      "ranges": [
+        {
+          "first": "SNU-668_P1_A1_seed",
+          "last": "SNU-668_P1_A3_seed",
+          "label": "P",
+          "label2": "starvation\nline 1"
+        },
+        {
+          "first": "SNU-668_P2_A1_seed",
+          "last": "SNU-668_P2_A3_seed",
+          "label": "P",
+          "label2": "starvation\nline 2"
+        },
+        {
+          "first": "SNU-668_C_A1_seed",
+          "last": "SNU-668_C_A3_seed",
+          "label": "P",
+          "label2": "control"
+        }
+      ]
+    }
+  ],
+  "manual_filters": [
+    {
+      "key": "id",
+      "values": [
+        "SNU-668_r3_a56t3_LT_harvestT1",
+	"SNU-668_r2_2n4n_lt_harvest_T2",
+	"SNU-668_K3_LT_harvesT2",
+	"SNU-668_r3_LT_harvesT2",
+	"SNU-668_r3_LT_harvesT3"
+      ]
+    },
+    {
+      "key": "event",
+      "values": [
+        "seeding"
+      ]
+    }
+  ],
+  "plotting": {
+    "_comment": "Plotting configuration. Update the options below to customize plot appearance, including colors, titles, axis labels, and faceting. Also set the output path for saving the plot.",
+    "color_by": "EnergySource2_pct",
+    "make_growth_curves": true,
+    "make_generation_barplot": false,
+    "make_passage_vs_growth": false,
+    "output_path": "~/Downloads/SNU668_P.png",
+    "titles": {
+      "_comment": "Define titles for different experimental conditions. These will appear on the plots.",
+      "P": "Phosphate Deprivation",
+      "control": "Parental Control Lineage",
+      "passage_vs_growth": "Growth Rate Across Passages"
+    },
+    "axis_labels": {
+      "_comment": "Axis labels for the plots. Update these to change the x-axis and y-axis labels.",
+      "x_label": "Days After Seeding",
+      "y_label_cellcount": "Cell Count",
+      "y_label_growth": "Growth Rate (day⁻¹)",
+      "passage_label": ""
+    },
+    "facet_grid": {
+      "_comment": "Faceting options for splitting plots. 'rows' and 'cols' determine the grid layout, while 'scales' sets axis scaling behavior.",
+      "rows": "sublabel_value",
+      "cols": "adjPass",
+      "scales": "free"
+    }
+  },
+  "database_settings": {
+    "_comment": "Database settings. Set disconnect_on_completion to true to close the database connection after processing.",
+    "disconnect_on_completion": true
+  }
+}
