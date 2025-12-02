@@ -27,7 +27,7 @@ load_db_vars <- function(filepath) {
   setNames(values, keys)
 }
 
-analyze_fitness <- function(param_json_path, db_creds_path, output_csv = "fitness_dynamics_metrics.csv", diagnostic_pdf = "fitness_diagnostics.pdf", recovery_plot_pdf = "fitness_recovery_trends.pdf") {
+analyze_fitness <- function(param_json_path, db_creds_path, output_csv = "data/fitness_dynamics_metrics.csv", diagnostic_pdf = "figures/fitness_diagnostics.pdf", recovery_plot_pdf = "figures/fitness_recovery_trends.pdf") {
   
   suppressPackageStartupMessages({
     library(RMySQL)
